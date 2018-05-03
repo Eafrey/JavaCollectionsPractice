@@ -2,7 +2,9 @@ package com.thoughtworks.collection;
 
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class MyMap {
@@ -17,22 +19,44 @@ public class MyMap {
     }
 
     public List<Integer> getTriple() {
-        throw new NotImplementedException();
+        List<Integer> res = new ArrayList<>();
+        for(int num : array) {
+            res.add(num*3);
+        }
+        return res;
     }
 
     public List<String> mapLetter() {
-        throw new NotImplementedException();
+        List<String> res = new ArrayList<>();
+        for(int num : array) {
+            res.add(letters[num-1]);
+        }
+        return res;
     }
 
     public List<String> mapLetters() {
-        throw new NotImplementedException();
+        List<String> res = new ArrayList<>();
+
+        for(int num : array) {
+            String str = new String();
+            while(num > 26) {
+                int x = (num-1) / 26;
+                str += letters[x-1];
+                num = num - 26 * x;
+            }
+            res.add(str + letters[num-1]);
+        }
+        return res;
     }
 
     public List<Integer> sortFromBig() {
-        throw new NotImplementedException();
+        Collections.sort(array);
+        Collections.reverse(array);
+        return array;
     }
 
     public List<Integer> sortFromSmall() {
-        throw new NotImplementedException();
+        Collections.sort(array);
+        return array;
     }
 }
