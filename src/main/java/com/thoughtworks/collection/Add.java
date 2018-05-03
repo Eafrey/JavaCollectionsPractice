@@ -2,9 +2,7 @@ package com.thoughtworks.collection;
 
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class Add {
     public int getSumOfEvens(int leftBorder, int rightBorder) {
@@ -134,14 +132,14 @@ public class Add {
             }
         }
 
-        Collections.sort(evenList);
-        for(int i=0; i<evenList.size()-1; i++) {
-            if(evenList.get(i) == evenList.get(i+1)) {
-                evenList.remove(i);
-            }
-        }
+        List<Integer> res = new ArrayList<>();
 
-        return evenList;
+        Set<Integer> set = new HashSet<>();
+        set.addAll(evenList);
+        for(int num : set) {
+            res.add(num);
+        }
+        return res;
     }
 
     public List<Integer> sortByEvenAndOdd(List<Integer> arrayList) {
